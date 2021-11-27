@@ -154,4 +154,30 @@ FibList(n):
 |  Total  |  O(n^2) |
 
 + Other notation:
-- Definition:
+- Definition: 
+
+![Other notation](./figures/using_big_o_1.PNG)
+
+![Other notation 2](./figures/using_big_o_2.PNG)
+
+
+## Logarithms
++ Main rules:
+$1. log_{a}(n^{k}) = klog_{a}n$
+$2. log_{a}(nm) = log_{a}n + log_{a}m$
+$3. n^{log_{a}b} = b^{log_{a}n}$
+$4. log_{a}n . log_{b}a = log_{b}n$
+
+## Course Overview
+### Algorithm Design is Hard
++ algorithms very general 
++ No generic procedure for designing good algorithms
++ Finding good algorithms often requires coming up with unique insights.
+  
+### Toolbox
++ Practice designing algorithms
++ Common tools used in algorithm design
++ We will discuss 3 of the most common algorithmic design techniques:
+    - Greed algorithms
+    - Divide & conquer
+    - Dynamic programming
