@@ -1,0 +1,3 @@
+﻿  Main.cpp
+D:\Self\Programming\CPP\CppDSA\CppDSA\Main.cpp(10,27): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  CppDSA.vcxproj -> D:\Self\Programming\CPP\CppDSA\x64\Debug\CppDSA.exe
