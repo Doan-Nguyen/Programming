@@ -181,3 +181,14 @@ $4. log_{a}n . log_{b}a = log_{b}n$
     - Greed algorithms
     - Divide & conquer
     - Dynamic programming
+
+### Levels of Design
++ Naive algorithm: Definition to algorithm
+    - Slow
++ Algorithm by way of standard tools:
+    - Standard techniques.
+    - Often it doesn't involve too much effort.
++ Optimized algorithm:
+    - Improve existing algorithm.
++ Magic algorithm:
+    - Unique insight
