@@ -17,25 +17,22 @@ def input_values():
             continue
         lst.append((v, w))
     #
-    lst.sort(key=lambda x: x[0], reverse=True)
+    lst.sort(key=lambda x: x[0]/x[1], reverse=True)
     return lst, n, W
 
 
 def maximum_value_of_loot(lst, n, W):
-    numb_turn = n
     max_value = W
-    print(numb_turn, max_value)
     # sorted by value
     value = 0
-    c_turn = 0
-
-    for item in lst[1:]:
-        capacity_item = item[1]
-        value_item = item[0]
-
-        if item[1] <= max_value and c_turn < numb_turn:
-            c_turn += max_value/capacity_item
-            value += (max_value/capacity_item)*value_item
+    while(max_value > 0):
+        for item in lst:
+            if max_value >= item[1]:
+                print(max_value, item[1])
+                value += item[0]
+            else:
+                value += float(item[0]/item[1])*max_value
+            max_value = max_value - item[1]
     return value
 
 
