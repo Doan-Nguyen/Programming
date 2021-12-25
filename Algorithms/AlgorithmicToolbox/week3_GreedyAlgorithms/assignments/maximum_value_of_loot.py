@@ -22,21 +22,33 @@ def input_values():
 
 
 def maximum_value_of_loot(lst, n, W):
-    max_value = W
-    # sorted by value
-    value = 0
-    while(max_value > 0):
-        for item in lst:
-            if max_value >= item[1]:
-                print(max_value, item[1])
-                value += item[0]
-            else:
-                value += float(item[0]/item[1])*max_value
-            max_value = max_value - item[1]
-    return value
+    # max_value = W
+    # # sorted by value
+    # value = 0
+    # for i in range(n):
+    #     item = lst[i]
+    #     if max_value >= item[1]:
+    #         value += float(item[0])
+    #     else:
+    #         value += float(item[0]/item[1])*max_value
+    #     max_value = max_value - item[1]
+    # return round(value, 4)
+    total_value = 0
+
+    for v,w in lst:
+        if W==0:
+            print(total_value)
+            quit()
+        amt = min(w, W)
+        total_value += amt*v/w
+        W -= amt
+
+    print(total_value)
 
 
 if __name__ == "__main__":
     lst, n, W = input_values()
     value = maximum_value_of_loot(lst, n, W)
-    print(value)
+    # print(value)
+    #
+   

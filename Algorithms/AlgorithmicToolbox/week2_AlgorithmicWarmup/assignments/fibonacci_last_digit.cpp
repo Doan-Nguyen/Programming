@@ -2,24 +2,42 @@
 //
 
 #include <iostream>
+#include <vector>
+#include <cassert>
 
 using std::cin;
 using std::cout;
+using namespace std;
 
 
-long long fibonacci(int n) {
-    if (n <= 1) {
+int LastDigitFibonacci(int n){
+    vector<long long int> vec_nums = {0, 1};
+    if (n <= 1){
         return n;
     }
-    return fibonacci(n - 1) + fibonacci(n - 2);
+    for (int i=2; i <= n; i++){
+        long long int next_num = vec_nums.end()[-1]%10 + vec_nums.end()[-2]%10;
+        // cout << "append: " << next_num << '\n';
+        vec_nums.push_back(next_num%10);
+    }
+    return vec_nums.end()[-1];
 }
 
-int LastDigitFibonacci(int n) {
-    long long last_number = fibonacci(n);
-    int last_digit_number = last_number % 10;
-    return last_digit_number;
-}
+int get_fibonacci_last_digit_naive(int n) {
+    if (n <= 1)
+        return n;
 
+    int previous = 0;
+    int current  = 1;
+
+    for (int i = 0; i < n - 1; ++i) {
+        int tmp_previous = previous;
+        previous = current;
+        current = tmp_previous + current;
+    }
+
+    return current % 10;
+}
 
 
 int main() {
