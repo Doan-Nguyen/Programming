@@ -100,16 +100,17 @@
     - this array have a capacity to store sequences of up to 20 characters.
     - the end of strings represented in character sequences is signaled by a special character: *null character*  - '\0'
 
-+ Initialization of null-terminated character sequences
++ **Initialization** of null-terminated character sequences
     - To initialize an array of characters with som predetermined sequence of characters:
         ```
         char predet_char = {"O", "l", "l", "e", "h", "\0"};
         ```
     - Another way to initialized: using *string literals* directly
         ```
-        char str = "Hello";
+        char predet_char = "Olleh";
         ```
-
+    - In both cases, the array of *predet_char* is declared with a size of 6 elements of type char.
+    - **Note**: i initialized an array of characters and not assign values to them.
 
 #### 2.2.3 Structure
 + Data structures
@@ -191,6 +192,31 @@
     new_person->favorite_movie.year
     ```
 
+#### 2.2.4 Pointers
++ The variable can be accessed by 2 way:
+    - it's identifier (name)
+    - it's location
 
++ Address-of operator (&)     
+
++ Dereference operator (*)
+
++ Declaring pointers 
+
++ Pointers and arrays
+
++ Pointer initialization
+
++ Pointer arithmetics
+
++ Pointers & cost
+
++ Pointers and string literals
+
++ Pointers to pointers
+
++ Void pointers
+
++ Invalid pointers and null pointers
 # Reference:
 [1] https://www.cplusplus.com/doc/tutorial/
