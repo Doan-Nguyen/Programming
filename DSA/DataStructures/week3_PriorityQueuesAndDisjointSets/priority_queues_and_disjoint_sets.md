@@ -95,7 +95,23 @@
 + *Remove*: change the priority of the element to $\infty$ , let it sift up and then extract maximum.
 
 ### Complete binary trees
++ A binary tree is *complete* if all its levels are filled except (ngoai tru) possibly the last one which is filled from left to right.
+(Tất cả các levels đều đc lấp đầy, ngoại trừ có thể là cấp cuối cùng được điền từ trái sang phải)
 
+    ![complete_binary_tree](./figures/complete_binary_tree.PNG)
+
++ Otherwise
+
+    ![not_complete_binary_tree](./figures/not_complete_binary_tree.PNG)
+
++ Advantage
+  - Low height
+    - Lemma (bổ đề): a complete binary tree with *n* nodes has height at most O(log n)
+    - Proof:
+
+    ![proof_lemma_tree_height](./figures/proof_lemma_tree_height.PNG)
+
+  - Store as array    
 ### Pseudo code
 
 ### Heap sort
