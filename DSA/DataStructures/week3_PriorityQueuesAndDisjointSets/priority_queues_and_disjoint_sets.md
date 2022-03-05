@@ -84,9 +84,15 @@
     - Replace the root with any leaf -> maybe violate the heap property.
     => solution: *SiftDown* swap the problematic node with larger child until the heap property is satisfied.
 
-
     ![ex_extract_max](./figures/ex_extract_max.PNG)
 
++ *ChangePriority*: change the priority and let the changed element sift up or sift down depending on whether it's priority decreased or increased.
+
+    ![ex_change_priority](./figures/ex_change_priority.PNG)
+
+    - running time: O(tree height)
+
++ *Remove*: change the priority of the element to $\infty$ , let it sift up and then extract maximum.
 
 ### Complete binary trees
 
