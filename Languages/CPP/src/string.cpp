@@ -1,10 +1,18 @@
 #include <string>
 #include <iostream>
+using namespace std;
 
 
 int main(){
-    char test_size[10];
-    test_size = "Hello world";
-    std::cout << test_size;
+    char question1[] = "What is your name? ";
+    string question2 = "Where do you live? ";
+    char answer1 [80];
+    string answer2;
+    cout << question1;
+    cin >> answer1;
+    cout << question2;
+    cin >> answer2;
+    cout << "Hello, " << answer1;
+    cout << " from " << answer2 << "!\n";
     return 0;
 }

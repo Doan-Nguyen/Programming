@@ -17,7 +17,10 @@ void arr_multi_dimension(){
 
 
 int main(){
-    arr_multi_dimension();
-    //
+    // arr_multi_dimension();
+    //          Static array
+    int arr[15];
+    int n = 0;
+
     return 0;
 }

@@ -193,11 +193,16 @@
     ```
 
 #### 2.2.4 Pointers
-+ The variable can be accessed by 2 way:
-    - it's identifier (name)
-    - it's location
++ The variable can be accessed by:
+    - identifier (name)
+    - location
 
-+ Address-of operator (&)     
++ Address-of operator (&) 
+    - The address of a variable can be obtained by preceding the name of a variable with '&' - *address-of operator*:
+    ```
+    var_add = &var;
+    ```
+        - assign the address of variable *var* to *var_add*.
 
 + Dereference operator (*)
 
@@ -220,3 +225,5 @@
 + Invalid pointers and null pointers
 # Reference:
 [1] https://www.cplusplus.com/doc/tutorial/
+[2] https://xlinux.nist.gov/dads
+[3] https://cis.stvincent.edu/html/tutorials/swd/index.html
