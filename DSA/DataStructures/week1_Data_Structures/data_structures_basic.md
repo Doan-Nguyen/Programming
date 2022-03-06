@@ -35,6 +35,14 @@
 
 ## 1.2 Singly-Linked lists
 
++ **Advantages over arrays:**
+  - dynamic size
+  - ease of insertion/deletion
++ **Drawback**:
+    - random access is not allowed
+    - Extra memory space for a pointer is required with each element of the list.
+    - not cache friendly (because each node can be randomly arranged in memory, so resulting in many cache missing)
+    
 ![singly_linked_lists](./figures/singly_linked_lists.PNG)
 
 + **The operations:**
