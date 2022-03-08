@@ -1,6 +1,35 @@
-# 1. Arrays and Linked Lists
+# Basic Data Structures
 
-## 1.1 Arrays
+# Contents
+- [Basic Data Structures](#basic-data-structures)
+- [Contents](#contents)
+  - [1. Arrays and Linked Lists](#1-arrays-and-linked-lists)
+    - [1.1 Arrays](#11-arrays)
+    - [1.2 Singly-Linked lists](#12-singly-linked-lists)
+      - [Push front](#push-front)
+      - [PopFront](#popfront)
+      - [PushBack(Key)](#pushbackkey)
+      - [PopBack()](#popback)
+      - [AddAfter(node, key)](#addafternode-key)
+      - [Summary](#summary)
+    - [1.3 Doubly-Linked lists](#13-doubly-linked-lists)
+      - [PushBack(key)](#pushbackkey-1)
+      - [PopBack()](#popback-1)
+      - [AddAfter(node, key)](#addafternode-key-1)
+      - [Summary](#summary-1)
+  - [2. Stack and Queues](#2-stack-and-queues)
+    - [2.1 Stack](#21-stack)
+      - [IsBalanced(str)](#isbalancedstr)
+      - [Stack implement with array](#stack-implement-with-array)
+      - [Stack implement with Linked List](#stack-implement-with-linked-list)
+      - [Summary](#summary-2)
+    - [2.2 Queues](#22-queues)
+  - [3. Trees](#3-trees)
+    - [3.2 Tree Traversal](#32-tree-traversal)
+
+## 1. Arrays and Linked Lists
+
+### 1.1 Arrays
 
 + **Definition**: Array contigous (sequence) area of memory consisting of equal-size elements indexed by contiguous integers.
     - it is broken down into equal sized elements.
@@ -33,7 +62,7 @@
     - Constant time access to any element.
     - Constant time to add/remove at the end.
 
-## 1.2 Singly-Linked lists
+### 1.2 Singly-Linked lists
 
 + **Advantages over arrays:**
   - dynamic size
@@ -58,7 +87,7 @@
     - AddBefore(Node, Key): adds key before node
     - AddAfter(Node, Key): adds key after node
 
-### Push front
+#### Push front
 + Visualize O(1):
 
 ![visualize_push_front](./figures/visualize_push_front.PNG)
@@ -75,7 +104,7 @@ PushFront(key):
         tail := head
 ```
 
-### PopFront
+#### PopFront
     
 + Step by step - O(1):
     - Step 1: update the head pointer
@@ -91,7 +120,7 @@ PopFront():
         tail := null
 ```
 
-### PushBack(Key)
+#### PushBack(Key)
 + Pseudo code
 ```
 node := new node
@@ -104,7 +133,7 @@ else:
     tail := node
 ```
 
-### PopBack()
+#### PopBack()
 
 + Pseudo code:
 ```
@@ -120,7 +149,7 @@ p.next := null
 tail := p
 ```
 
-### AddAfter(node, key)
+#### AddAfter(node, key)
 
 + Pseudo code:
 ```
@@ -132,35 +161,35 @@ if tail == node:
     tail := node2
 ```
 
-### Summary
+#### Summary
 
 ![summary_array](./figures/summary_array.PNG)
 
-## 1.3 Doubly-Linked lists
+### 1.3 Doubly-Linked lists
 
 + Visual doubly-linked:
 
 ![doubly_linked_list](./figures/doubly_linked_list.PNG)
 
-### PushBack(key)
+#### PushBack(key)
 
 ![pushback](./figures/doubly_linked_pushback.PNG)
 
-### PopBack()
+#### PopBack()
 
 ![doubly_linked_popback](./figures/doubly_linked_popback.PNG)
 
-### AddAfter(node, key)
+#### AddAfter(node, key)
 
 ![doubly_linked_addafter](./figures/doubly_linked_addafter.PNG)
 
-### Summary
+#### Summary
 
 ![doubly_linked_summary](./figures/doubly_linked_summary.PNG)
 
-# 2. Stack and Queues
+## 2. Stack and Queues
 
-## 2.1 Stack
+### 2.1 Stack
 
 + Definition:
     - Stack: abstract data type with following operations:
@@ -182,7 +211,7 @@ if tail == node:
         - "]["
 
 
-### IsBalanced(str)
+#### IsBalanced(str)
 ```
 Stack stack
 for char in str:
@@ -197,18 +226,18 @@ for char in str:
 return stack.Empty()                
 ```
 
-### Stack implement with array
+#### Stack implement with array
 
-### Stack implement with Linked List
+#### Stack implement with Linked List
 
 + The limitation of array is maximum size.
 
-### Summary
+#### Summary
 + Stack can be implemented with either an array or a linked list.
 + Each stack operation is O(1): Push, Pop, Top, Empty
 + Stack: LIFO queues.
 
-## 2.2 Queues
+### 2.2 Queues
 
 + Definition:
     - **Queues**: Abstract data type with the following operations:
@@ -217,7 +246,7 @@ return stack.Empty()
       - Boolean Empty(): are there any elements ?
     - First In First Out (FIFO)
 
-# 3. Trees
+## 3. Trees
 
 + Definition: A tree is:
     - Empty, or
@@ -264,7 +293,7 @@ size(tree):
     return 1 + size(tree.left) + size(tree.right)
 ```
 
-## 3.2 Tree Traversal
+### 3.2 Tree Traversal
 
 + Có 2 phương pháp duyệt cây chính:
     - Deeth-first (tìm kiếm chiều sâu): di chuyển hết 1 cây con rồi chuyển sang cây khác đồng cấp.

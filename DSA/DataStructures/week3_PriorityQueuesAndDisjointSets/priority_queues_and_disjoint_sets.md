@@ -113,8 +113,52 @@
 
   - Store as array    
 ### Pseudo code
++ **General Setting**
+  - *maxSize*: the maximum number of elements in the heap
+  - *size*: the size of the heap
+  - *H[1, ..., maxSize]*: an array of length *maxSize* where the heap occupies the first *size* elements.
+
++ How to find given a node *i*
+
+![find_given_a_node](./figures/find_given_a_node.PNG)
+
++ To sift element *i* up
+    - while element not root & it's value > its parent 's value -> swap this element with it's parent
+![sift_up](./figures/sift_up.PNG)
+
++ To sift element *i* down:
+    - step 1: select the direction of sifting
+      - if element <= one/two of children -> select the largest one of it's two children.
+    - initially, assign maxIndex = i
+    - compute the index of left child of the node number i
+
+![sift_down](./figures/sift_down.PNG)
+
++ To insert new element with priority *p*
+
+![insert](./figures/insert.PNG)
+
++ Extract max value from binary max heap
+
+![extract_max](./figures/extract_max.PNG)
+
++ Remove element *i*
+
+![remove_element](./figures/remove_element.PNG)
+
++ Change the priority of a given node *i*
+
+![change_priority](./figures/change_priority.PNG)
+
++ Summary
+
+![summary_binary_max_heap](./figures/summary_binary_max_heap.PNG)
 
 ### Heap sort
+
++ Sort using priority queues
+
+![sort_using_priority_queues](./figures/sort_using_priority_queues.PNG)
 
 ### Final Remarks
 ## 3. Priority Queues: Heap Sort <a name="priority_queues_heap_sort"></a>
