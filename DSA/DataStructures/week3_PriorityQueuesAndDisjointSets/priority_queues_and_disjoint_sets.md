@@ -9,9 +9,10 @@
     - [Basic operations](#basic-operations)
     - [Complete binary trees](#complete-binary-trees)
     - [Pseudo code](#pseudo-code)
-    - [Heap sort](#heap-sort)
-    - [Final Remarks](#final-remarks)
   - [3. Priority Queues: Heap Sort <a name="priority_queues_heap_sort"></a>](#3-priority-queues-heap-sort-)
+    - [Heap sort](#heap-sort)
+    - [Building a Heap](#building-a-heap)
+    - [Final Remarks](#final-remarks)
   - [4. Disjoint Sets: Naive Implementations <a name="disjoint_sets_naive_implementations"></a>](#4-disjoint-sets-naive-implementations-)
   - [5. Disjoint Sets: Efficient Implementations <a name="disjoint_sets_efficient_implementations"></a>](#5-disjoint-sets-efficient-implementations-)
 
@@ -120,11 +121,11 @@
 
 + How to find given a node *i*
 
-![find_given_a_node](./figures/find_given_a_node.PNG)
+    ![find_given_a_node](./figures/find_given_a_node.PNG)
 
 + To sift element *i* up
     - while element not root & it's value > its parent 's value -> swap this element with it's parent
-![sift_up](./figures/sift_up.PNG)
+    ![sift_up](./figures/sift_up.PNG)
 
 + To sift element *i* down:
     - step 1: select the direction of sifting
@@ -132,37 +133,58 @@
     - initially, assign maxIndex = i
     - compute the index of left child of the node number i
 
-![sift_down](./figures/sift_down.PNG)
+    ![sift_down](./figures/sift_down.PNG)
 
 + To insert new element with priority *p*
 
-![insert](./figures/insert.PNG)
+    ![insert](./figures/insert.PNG)
 
 + Extract max value from binary max heap
 
-![extract_max](./figures/extract_max.PNG)
+    ![extract_max](./figures/extract_max.PNG)
 
 + Remove element *i*
 
-![remove_element](./figures/remove_element.PNG)
+    ![remove_element](./figures/remove_element.PNG)
 
 + Change the priority of a given node *i*
 
-![change_priority](./figures/change_priority.PNG)
+    ![change_priority](./figures/change_priority.PNG)
 
 + Summary
 
-![summary_binary_max_heap](./figures/summary_binary_max_heap.PNG)
+    ![summary_binary_max_heap](./figures/summary_binary_max_heap.PNG)
+
+## 3. Priority Queues: Heap Sort <a name="priority_queues_heap_sort"></a>
 
 ### Heap sort
 
 + Sort using priority queues
 
-![sort_using_priority_queues](./figures/sort_using_priority_queues.PNG)
+    - The resulting algorithm is comparison-based and has running time O(n log n) (hence, asymptotically (tiem can) optimal)
+
+    - Natural generalization of selection sort: instead of simply scanning the rest (phan con lai) of the array to find the maximum value, use a smart data structure.
+
++ **Disadvantage** 
+    - not in-place: uses additional space to store the priority queue
+
+=> in order to avoid this disadvantage, we use heap sort algorithm.
+
++ **Idea**:
+    -  Transfer array into a binary heap (by permuting (hoan vi) its elements) 
+    -  Sort array.
++ Pseudo code:
+    - Turn array into a heap:
+    ![build_heap](./figures/build_heap.PNG)
+
+    - 
+
+    ![sort_using_priority_queues](./figures/sort_using_priority_queues.PNG)
+
+
+### Building a Heap
 
 ### Final Remarks
-## 3. Priority Queues: Heap Sort <a name="priority_queues_heap_sort"></a>
-
 ## 4. Disjoint Sets: Naive Implementations <a name="disjoint_sets_naive_implementations"></a>
 
 ## 5. Disjoint Sets: Efficient Implementations <a name="disjoint_sets_efficient_implementations"></a>
