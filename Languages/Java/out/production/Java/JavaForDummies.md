@@ -140,16 +140,6 @@ class PreincrementDemo{
 
 #### Assignment operators
 
-```
-class UseAssignmentOperators{
-    public static void main(String args[]){
-        int numberOfBunnies = 10;
-        System.out.println(numberOfBunnies -= 7);
-        System.out.println(numberOfBunnies =  20);
-    }
-}
-```
-
 ### Chapter 5: Controlling Program Flow with Decision-Making Statements
 
 ### Chapter 6: Controlling Program Flow with Loops
