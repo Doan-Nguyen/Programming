@@ -296,8 +296,16 @@ size(tree):
 ### 3.2 Tree Traversal
 
 + Có 2 phương pháp duyệt cây chính:
-    - Deeth-first (tìm kiếm chiều sâu): di chuyển hết 1 cây con rồi chuyển sang cây khác đồng cấp.
-    - Breadth-first (tìm kiếm chiều rộng): di chuyển qua tất cả các nodes cùng level trước khi chuyển sang level khác.
+    - **Depth-first search (tìm kiếm chiều sâu)**: di chuyển hết 1 cây con rồi chuyển sang cây khác đồng cấp.
+        - Implement: stack
+        - Cons: sử dụng ít memory hơn BFS
+        - **Solve: tìm đường đi ngắn nhất** (the shortest distance)
+    - **Breadth-first search (tìm kiếm chiều rộng)**: di chuyển qua tất cả các nodes cùng level trước khi chuyển sang level khác.
+        - Implement: queue
+        - Solve: check all cases
+
+    ![depth-first_breadth-first](./figures/depth-first_breadth-first.PNG)
+
 
 
 + Depth-first:
