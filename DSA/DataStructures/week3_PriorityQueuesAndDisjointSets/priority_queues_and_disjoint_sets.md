@@ -172,15 +172,24 @@
 
 + **Idea**:
     -  Transfer array into a binary heap (by permuting (hoan vi) its elements) 
-    -  Sort array.
+    -  Sort array:
+       - Step 1: The heap property is satisfied in all the leaves
+       - Step 2: Start repairing the heap property in all subtrees of depth 1
+       - Step 3: With the root, the heap property is satisfied in the whole tree.
+    - Running time: O(n log n)
 + Pseudo code:
     - Turn array into a heap:
-    ![build_heap](./figures/build_heap.PNG)
 
-    - 
+        ![build_heap](./figures/build_heap.PNG)
 
-    ![sort_using_priority_queues](./figures/sort_using_priority_queues.PNG)
+    - In-place heap sort:
 
+        ![sort_using_priority_queues](./figures/sort_using_priority_queues.PNG)
+
+
++ Advantage:
+    - No need more memory
+    - Worst case running: O(n log n)
 
 ### Building a Heap
 

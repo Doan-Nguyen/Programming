@@ -223,7 +223,91 @@
 + Void pointers
 
 + Invalid pointers and null pointers
+
+## Tốc kí
+
+### Array 
++ Hoán đổi giá trị 
+
+    ```
+    int a = 3;
+    int b = 5;
+    // a = 5 & b = 3
+    int tmp;
+    tmp = b;
+    b = a;
+    a = tmp;
+    ```
+
++ Khởi tạo mảng:
+
+```
+int arr[5] = {1, 2, 3, 4, 5};
+int arr[10] = {1, 2, 3, 4, 5};
+int arr[] = {1, 2, 3, 4, 5};
+```
+
++ Mảng nhiều chiều:
+
+    - Mảng 2 chiều:
+        ```
+        int arr[n_cols][n_rows]; 
+        int arr[x][y];
+        ```
+
+    - Mảng 3 chiều:
+        ```
+        int arr[cột][tầng][phòng]
+        ```
+
+### structure
+
++ dùng đề khai báo các thông tin cùng liên quan đến 1 đối tượng.
+    - Một tập hợp các phần tử có kiểu dữ liệu khác nhau.
+    - Các phần tử được xác định theo tên thay vì số.
+
+```
+struct PERSON{
+    string name;    // field 1
+    int age;        // field 2
+};
+```
+
++ *struct* chỉ mô tả về đối tượng. Muốn khai báo ta cần làm rõ:
+
+```
+struct PERSON per1;
+//      or
+PERSON per2;
+```
+
++ Muốn lựa chọn 1 trường:
+
+```
+PERSON.name = "doan";
+```
+
++ Cách sử dụng:
+```
+struct Student{
+    string name;
+    float math_score;
+    int index;  
+};
+
+Student FirstStudent;
+FirstStudent.name = "Olleh";
+FirstStudent.math_score = 6.9;
+FirstStudent.index = 12;
+```
+
++ Có thể 2 struct lồng nhau
+```
+
+```
+
 # Reference:
 [1] https://www.cplusplus.com/doc/tutorial/
 [2] https://xlinux.nist.gov/dads
 [3] https://cis.stvincent.edu/html/tutorials/swd/index.html
+[4] https://cppdeveloper.com/
