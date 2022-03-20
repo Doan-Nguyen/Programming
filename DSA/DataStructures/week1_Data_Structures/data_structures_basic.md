@@ -3,6 +3,7 @@
 # Contents
 - [Basic Data Structures](#basic-data-structures)
 - [Contents](#contents)
+- [Source code:](#source-code)
   - [1. Arrays and Linked Lists](#1-arrays-and-linked-lists)
     - [1.1 Arrays](#11-arrays)
     - [1.2 Singly-Linked lists](#12-singly-linked-lists)
@@ -27,6 +28,9 @@
   - [3. Trees](#3-trees)
     - [3.2 Tree Traversal](#32-tree-traversal)
     - [3.3 Implement](#33-implement)
+
+# Source code:
+[My implement](https://github.com/Doan-Nguyen/CompetitiveProgramming/tree/master/Reimplement/DataStructuresJava/src/datastructures)
 
 ## 1. Arrays and Linked Lists
 
@@ -314,7 +318,6 @@ size(tree):
 
 ### 3.3 Implement
 
-+ My implement: https://github.com/Doan-Nguyen/CompetitiveProgramming/tree/master/Reimplement/DataStructuresJava/src/datastructures
 
 + Queue example: BFS
 
