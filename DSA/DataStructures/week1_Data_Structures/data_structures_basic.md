@@ -26,6 +26,7 @@
     - [2.2 Queues](#22-queues)
   - [3. Trees](#3-trees)
     - [3.2 Tree Traversal](#32-tree-traversal)
+    - [3.3 Implement](#33-implement)
 
 ## 1. Arrays and Linked Lists
 
@@ -257,11 +258,11 @@ return stack.Empty()
 
 + Simple tree:
 
-![simple_tree](./figures/simple_tree.PNG)
+    ![simple_tree](./figures/simple_tree.PNG)
 
 + Terminology:
 
-![tree_example](./figures/tree_example.PNG)
+    ![tree_example](./figures/tree_example.PNG)
 
     - Fred ~ root (level 1)
     - Kate ~ parent of Sam & Hung (level 2)
@@ -296,19 +297,30 @@ size(tree):
 ### 3.2 Tree Traversal
 
 + Có 2 phương pháp duyệt cây chính:
+        
+    - **Breadth-first search (tìm kiếm chiều rộng)**: di chuyển qua tất cả các nodes cùng level trước khi chuyển sang level thấp hơn khác.
+        - Implement: queue
+        - Solve: check all cases
+
     - **Depth-first search (tìm kiếm chiều sâu)**: di chuyển hết 1 cây con rồi chuyển sang cây khác đồng cấp.
         - Implement: stack
         - Cons: sử dụng ít memory hơn BFS
         - **Solve: tìm đường đi ngắn nhất** (the shortest distance)
-    - **Breadth-first search (tìm kiếm chiều rộng)**: di chuyển qua tất cả các nodes cùng level trước khi chuyển sang level khác.
-        - Implement: queue
-        - Solve: check all cases
+
 
     ![depth-first_breadth-first](./figures/depth-first_breadth-first.PNG)
 
 
 
-+ Depth-first:
+### 3.3 Implement
+
++ My implement: 
+
++ Queue example: BFS
+
+    ![bfs_with_queue](./figures/bfs_with_queue.PNG)
+
+<!-- + Depth-first:
     ```
     inOrderTraversal(tree): # duyet thu tu
         if tree == null:
@@ -327,4 +339,4 @@ preOrderTraversal(tree):
     print(tree.key)
     preOrderTraversal(tree.left)
     preOrderTraversal(tree.right)
-```
+``` -->

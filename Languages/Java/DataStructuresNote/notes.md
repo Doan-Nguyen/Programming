@@ -95,7 +95,62 @@
     Cons | Cannot easily access previous elements | Takes 2x memory |
 ## Stack
 
++ What is a Stack ?
+
+    ![stack_overview](./figures/stack_overview.PNG)
+
++ When & where is a stack used ?
+
+    - Used by undo mechanisms in text editors (~ ctrl + z)
+    - Used in compiler syntax checking for matching brackets ('{' or '}') & braces ('<' or '>')
+    - Can be used to model a pile of books (mo hinh hoa 1 chong sach)
+    - Used behind the scenes to support recursion by keep track of previous functions calls. (ho tro de quy theo doi cac ham trc do)
+    - Can be use to do a Depth First Search (DFS) on a graph.
+
++ Complexity analysis
+
+![complexity_stack](./figures/complexity_stack.PNG)
+
++ Stack usage example
+
+```
+s := stack
+for bracket in bracket_string:
+    rev = getReversedBracket(bracket)
+    if isLeftBracket(bracket):
+        s.push(bracket)
+    else s.isEmpty() or s.pop() != rev:
+        return false
+return s.isEmpty()        
+
+```
+
+
 ## Queue
+
++ What is a queue ?
+    - FIFO: First In, First Out
+
+    ![queue_oveview](./figures/queue_oveview.PNG)
+
++ Terminology
+    - Enqueue(key): adds key to collection
+    - Key dequeue(): removes & returns least recently-added key
+    - Boolean Empty(): are there any elements ?
+
+    ![queue_terminology](./figures/queue_terminology.PNG)
+
++ When & where is a queue used ?
+    - Any waiting line models a queue. Example: a lineup at a movie theatre
+    - Can be used to efficiently keep track of the *x* most recently added elements.
+    - Web server request management where you want first come first serve.
+    - Breadth First Search (BFS) graph traversal.
+
++ Complexity analysis 
+
+    ![complexity_queue](./figures/complexity_queue.PNG)
+
++ Queue breadth first search (BFS) example
 
 ## Priority queue
 
