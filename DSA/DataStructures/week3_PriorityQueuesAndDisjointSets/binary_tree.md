@@ -53,8 +53,11 @@
     - Step 2: **Replace** the  node we want to remove with it's successor (~ con) to maintain the BST invariant.
     - *Recall*: BST invariant <=> left subtree has smaller elements & right subtree has larger elements.
 
-+ Finding element:
-    - Step 1: 
++ Finding element: (search our BST for a node with a particular value)
+    - Step 1: Hit a *null node* at which point we know the value does not exist within our BST
+    - Step 2: Comparator value equal to 0 (found it)
+    - Step 3: Comparator value less than 0 (the value, if it exists, is in the left subtree)
+    - Step 4: Comparator value greater than 0 (the value, if it exists, is in the right subtree)
 
 
 # Reference: 

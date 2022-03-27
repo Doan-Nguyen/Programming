@@ -212,21 +212,40 @@ Contains check with help of a hash table * | O(1) |
        - Step 2: Start repairing the heap property in all subtrees of depth 1
        - Step 3: With the root, the heap property is satisfied in the whole tree.
     - Running time: O(n log n)
-+ Pseudo code:
-    - Turn array into a heap:
 
-        ![build_heap](./figures/build_heap.PNG)
-
-    - In-place heap sort:
-
-        ![sort_using_priority_queues](./figures/sort_using_priority_queues.PNG)
-
++ Evaluate:
+    - We repair the heap property going from bottom to top.
+    - Initially, the heap property is satisfied in all the leaves
+    - Start repairing the heap property in all subtrees of depth 1.
+    - When we reach the root, the heap property is satisfied in the whole tree.
 
 + Advantage:
     - No need more memory
     - Worst case running: O(n log n)
 
++ Pseudo code:
+    - Turn array into a heap:
+
+        ![build_heap](./figures/build_heap.PNG)
+
+    - Sort using priority queues:
+
+        ![sort_using_priority_queues](./figures/sort_using_priority_queues.PNG)
+
+    - In-place heap sort: 
+
+        ![in_place_heap_sort](./figures/in-place_heap_sort.PNG)
+
+
++ **In the practive**:
+    - First, try quick sort. If slow (~ the recursion dips)
+    - Second, try heap sort
+
 ### Building a Heap
++ The running time of BuildHeap: O(n log n)
+    - SiftDown: O(n) , *n* - number of nodes
++ If a node is already close to the leaves, then sifting it down is fast.
++ 
 
 ### Final Remarks
 ## 4. Disjoint Sets: Naive Implementations <a name="disjoint_sets_naive_implementations"></a>
