@@ -8,10 +8,11 @@
   - [2. Priority Queues: Binary Heaps <a name="priority_queues_heaps"></a>](#2-priority-queues-binary-heaps-)
     - [Binary Trees](#binary-trees)
     - [Basic operations](#basic-operations)
-    - [Turning Min PQ into Max PQ](#turning-min-pq-into-max-pq)
     - [Complete binary trees](#complete-binary-trees)
     - [Pseudo code](#pseudo-code)
     - [Complexity PQ with binary heap](#complexity-pq-with-binary-heap)
+    - [Turning Min PQ into Max PQ](#turning-min-pq-into-max-pq)
+    - [Adding elements to Binary heap](#adding-elements-to-binary-heap)
   - [3. Priority Queues: Heap Sort <a name="priority_queues_heap_sort"></a>](#3-priority-queues-heap-sort-)
     - [Heap sort](#heap-sort)
     - [Building a Heap](#building-a-heap)
@@ -53,6 +54,11 @@
     - *Minimum Spanning Tree*: 
     - *Best First Search*
     - Anytime you need the dynamically fetch the "next best" or "next worst" element.
+
++ What is a Heap ? 
+    - A heap là 1 cây mà các nút cha được so sánh với nút con & được sắp xếp một cách phù hợp.
+      - Max-heap
+      - Min-heap
 
 + **When & where is a PQ used ?**
     - Bất kì thời điểm nào cần tới việc kết nạp có tính linh động các phần từ "next best" or "next worst"
@@ -110,11 +116,6 @@
 + **Summary**:  
   - getMax() : O(1)
   - all other operations work in O(tree_height)
-
-### Turning Min PQ into Max PQ
-+ Problem: Các thư viện thường chỉ cung cấp hàm tìm ra *min priority queues*. Nếu ta cần tìm *max priority queues* ?
-    - *min priority queues*: sắp xếp phần tử có giá trị nhỏ nhất ở đầu
-    => solution: invert
 
 ### Complete binary trees
 + A binary tree is *complete* if all its levels are filled except (ngoai tru) possibly the last one which is filled from left to right.
@@ -179,16 +180,24 @@
 
 ### Complexity PQ with binary heap
 
-Binary heap construction | O(n) |
-Polling | O(log(n)) |
-Peeking | O(1) |
-Adding | O(log(n)) |
-Naive Removing | O(n) |
-Advanced removing with help from a hash table * | O(log(n)) |
-Naive contains | O(n) |
-Contains check with help of a hash table * | O(1) |
+|Binary heap construction | O(n) |
+|--- | --- |
+|Polling | O(log(n)) |
+|Peeking | O(1) |
+|Adding | O(log(n)) |
+|Naive Removing | O(n) |
+|Advanced removing with help from a hash table * | O(log(n)) |
+|Naive contains | O(n) |
+|Contains check with help of a hash table * | O(1) |
 
 **Note**: Using a hash table to help optimized these operations does take up linear space and also adds some overhead to the binary heap implementation.
+
+### Turning Min PQ into Max PQ
++ Problem: Các thư viện thường chỉ cung cấp hàm tìm ra *min priority queues*. Nếu ta cần tìm *max priority queues* ?
+    - *min priority queues*: sắp xếp phần tử có giá trị nhỏ nhất ở đầu
+    => solution: invert (* -1)
+
+### Adding elements to Binary heap
 
 ## 3. Priority Queues: Heap Sort <a name="priority_queues_heap_sort"></a>
 
