@@ -131,7 +131,11 @@
     + Kiểu đơn giản nhất, việc nhận data từ body hoàn toàn giống như với query parameters.
     + Việc định nghĩa mỗi tham số với *type hint* bởi hàm *Body* sẽ không cần thiết lập giá trị mặc định.
     + Nhưng cách thức này vẫn tồn tại nhiều hạn chế:
-      + 
+      + Dài dòng khi gặp những models lớn.
+      + Khả năng tái sử dụng CTDL kém.
+    + **Solution**: pydantic model
+      + Example: 
+
       
 
 + **Form data & file uploads**
