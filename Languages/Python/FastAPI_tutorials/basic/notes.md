@@ -135,6 +135,7 @@
       + Khả năng tái sử dụng CTDL kém.
     + **Solution**: pydantic model
       + Example: 
+
       
 
 + **Form data & file uploads**
