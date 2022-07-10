@@ -134,17 +134,47 @@
       + Dài dòng khi gặp những models lớn.
       + Khả năng tái sử dụng CTDL kém.
     + **Solution**: pydantic model
-      + Example: 
+      + Example: [request_body](https://github.com/Doan-Nguyen/Programming/blob/main/Languages/Python/FastAPI_tutorials/basic/src/c3_request_body_02.py)
 
-      
 
 + **Form data & file uploads**
+  + REST APIs thường sẽ làm việc với dạng file JSON nhưng đôi khi bạn cần xử lý dữ liệu dạng mã hóa (form-encode data) hoặc các upload files. Chúng thường được mã hóa bởi:
+    + *application/x-www-form-urlencoded*
+    + *multipart/form-data*: **Need more details**
+
+  + *Form data*:
+    + Dữ liệu được mã hóa thay vì để dạng JSON.
+    + Example: 
+
+  + *File uploads*:
+    + FastAPI cung cấp *File()* thực hiện việc upload file.
+      + Example: 
+    + Nhược điểm: 
+      + Với phương thức này, file tải lên sẽ lưu trữ hoàn toàn trong bộ nhớ. Khả năng xảy ra vấn đề khi gặp file có kích thước lớn.
+      + Thao tác với đối tượng byte không phải lúc nào cũng thuận tiện cho xử lý.
+      + **Solution**: FastAPI cung cấp lớp **UploadFile**.
+        + Class này sẽ chỉ lưu trữ các file trong memory đến 1 ngưỡng. Nếu vượt qua, dữ liệu sẽ được lưu trữ ở một vị trí tạm thời trong ổ cứng.
+        + Example: 
 
 + **Headers & cookies**
+  + *headers*: là một trong những thành phần chính của HTTP requests bên cạnh URL, body.
+    + Chúng gồm toàn bộ các loại metadata có thể được sử dụng trong quá trình xử lý requests.
+    + Một cách sử dụng phổ biến của nó là xác thực (authentication) - *cookies*
+    + FastAPI tự động chuyển header name dạng chữ thường (lowercase)
+    + **More details**: 
+      + HTTP requests:
+      + cookies:
+      + Example:       
+    + ? Bạn có thể nhận cookies thông qua việc phân tích header. Với FastAPI cung cấp tham số hàm giúp tự động hóa việc này.
+      + Example: 
+      + Bằng cách này, ngay cả khi cookies không được yêu cầu, FastAPI vẫn sẽ tạo ra cookie & không tạo lỗi trạng thái 422.
 
 + **The request object**
 
+
+
 #### Customizing the reponse
++ Ở các phần trước, chúng ta đã học cách trả về dạng *dictionary* hoặc pydantic object phục vụ cho FastAPi trả về 1 JSON respone. Phần này, ta sẽ tìm hiểu cách thức để tùy biến response thêm chút nữa như thay đổi status code, raising các lỗi xác nhận & thiết lập cho cookies.
 
 + Path operation parameters
 
@@ -155,7 +185,11 @@
 + Building a custom response
 
 
-### Managing Pydantic Data Models in FastAPI
+#### Structuring a bigger project with multiple routers
+
+
+
+### 4. Managing Pydantic Data Models in FastAPI
 
 #### Defining models & their field types with Pydantic
 
@@ -173,8 +207,7 @@
 
 + Applying validation at a field level
 
-
-### 4. Managing Pydantic Data Models in FastAPI
++ Applying 
 
 ### 5. Dependency Injections in FastAPI
 
