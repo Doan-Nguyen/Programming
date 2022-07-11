@@ -176,17 +176,81 @@
 #### Customizing the reponse
 + Ở các phần trước, chúng ta đã học cách trả về dạng *dictionary* hoặc pydantic object phục vụ cho FastAPi trả về 1 JSON respone. Phần này, ta sẽ tìm hiểu cách thức để tùy biến response thêm chút nữa như thay đổi status code, raising các lỗi xác nhận & thiết lập cho cookies.
 
-+ Path operation parameters
++ **Path operation parameters**
+  + Ở các phần trước, ta đã học để tạo ra một *endpoint* cần đặt một *decorator* ở đầu mỗi hàm đường dẫn hoạt động. Với mẫu thiết kế *decorator*, ta có thể tùy biến response.
 
-+ The reponse parameters
+  + HTTP status code: mã code server trả về sau mỗi lần gửi request. Tất cả các request đều được nhận được 1 status code tương ứng.
+    + *status_code*: được coi như keyword đối số (argument) được truyền vào sau *path operation*. Thể hiện status code mong muốn được phản hồi, thậm chí ghi đè trạng thái được phản hồi (không khuyến khích). Tưởng tượng, bạn làm 1 hành động nhưng không trả lại gì (vd: xóa 1 bức ảnh). Khi đó, bạn mong muốn trạng thái trả về nên là "204 No content".
+      + *Setting the status code dynamically*: ta sẽ tìm hiểu cách tùy biến status code bên trong *path operation* logic.
+      + Example: 
+      
 
-+ Raising HTTP errors
+    + *response model*: 
+      + Với FastAPI, trường hợp thường xảy ra sẽ trả về một *pydantic model*. Nó tự động được chuyển thành dạng JSON. Đôi khi, bạn cần có sự thay đổi giữa input data, data được lưu trong DB & data show cho end-user.
+      + Example: bạn cần có 1 DB bao gồm các blog posts. Chúng có vài thuộc tính: title, content, ngày tạo, số views. 
+      + Example: 
+      + Giả sử, bạn không muốn show số views. Sử dụng thêm: *response_model* sau *path operation*.
+      + Example: 
 
-+ Building a custom response
++ The response parameter
+  + Ngoài body & status code, đôi khi ta cần gửi headers hoặc set cookies (Response object) thông qua path operation function như các đối số của hàm.
+  
 
+  + **Setting headers**: 
+    + *Response* cho phép truy xuất tới các đặc tính, bao gồm cả *headers*. Nó là một dictionary đơn giản với key - tên của header, value - giá trị tương đương với header.
+    + Bạn không nhất thiết phải trả lại *Response object*, có thể trả lại JSON-encodable data & FastAPI sẽ thực hiện việc hình thành response thích hợp, bao gồm *headers*.
+
+  + **Setting cookies**:
+    + *cookies*: là file tạm được tự động tạo ra khi end-user truy cập web. Nó sẽ lưu những thông tin phục vụ cho những lần đăng nhập sau.
+    + Ta có thể build cặp *Set-Cookie* & đặt nó như 1 *headers* dictionary thông qua việc sử dụng *set_cookie()*.
+    + Example: 
+      + *max_age*: sau khoảng thời gian (ms) này, brower sẽ xóa cookie
+      + *set_cookie()*: hỗ trợ cho cả instance, path, domain, HTTP-only.
+
+  + **Setting the status code dynamically**:
+    + Ở mục *Path operation parameters*, chúng ta đã thử set mã trạng thái cho 1 response. Hạn chế của phương pháp này là nó sẽ thông báo như nhau cho các vấn đề xảy ra bên trong.
+    + Giả sử, ta có 1 *endpoint* thực hiện update một đối tượng trong database hoặc sẽ tạo ra nó nếu như chưa tồn tại. Hướng tiếp cận đúng nên:
+      + HTTP sẽ phản hồi *200 - OK* khi update thành công.
+      + HTTP sẽ phản hồi *201 - Created* khi create thành công.
+    + Giải pháp: sử dụng *status_code* trong *Response* object.
+      + Example: c3_response_parameters_03.py
+
+  + **Raising HTTP errors**
+    + Khi gọi đến REST API một cách thường xuyên, đôi khi hệ thống sẽ gặp những vấn đề. Có thể là tham số truyền vào sai, các trọng tải không hợp lệ hoặc object không tồn tại ... Vì đó, việc phát hiện ra issues trọng & việc thông báo đến lập trình viên 1 cách rõ ràng là vô cùng quan. Hai thông tin này được sử dụng để trả về: 
+      + status code: đưa ra gợi ý về bản chất lỗi.
+      + payload: 
+
+    + Để đưa ra các HTTP's issues, ta sẽ đưa ra các Python's exception (HTTPException). Từ các exceptions, ta có thể thiết lập *status code* & *error message*.
+      + Example: 
+
+  + **Building a custom response**
+    + Trong hầu hết trường hợp, FastAPI sẽ đảm nhiệm việc xây dụng HTTP response bằng việc cung cấp cho nó một vài dữ liệu tuần tự. Một cách gián tiếp, FastAPI sử dụng **JSONResponse** - 1 sub-class của _Response_. Class này thực hiện:
+      + Xử lý dữ liệu một cách tuần tự vào file JSON
+      + Thêm cặp _Content-Type_ header.
+    + Tuy nhiên, có một vài response classes cũng thực hiện các việc tương tự
+      + HTMLResponse: trả về một HTTP response
+      + PlainTextResponse: trả về một trường text
+      + ...
+    + Từ đó, ta có 2 cách để sử dụng chúng:
+      + (1): thiết lập _response_class_ như một đối số truyền vào *path decorator*
+      + (2): trả về trực tiếp một _response_
+    
+    + Sử dụng đối số _response_class_:
+      + Đơn giản, ta chỉ trả về dữ liệu dạng tiêu chuẩn JSON responses. 
+      + Example: 
+    + Tạo một sự chuyển hướng
+      + *RedirectResponse*: class thực hiện việc xây một HTTP hướng ~
+    + Serving a file
+    + Custom response
 
 #### Structuring a bigger project with multiple routers
-
+  + Với hệ thống lơn, ta nên sắp xếp cấu trúc source như sau: 
+    + models\
+      + 
+    + routers\: thường dùng riêng cho loại đối tượng. Vd: posts, users ...
+    + __init__.py
+    + app.py
+    + db.py
 
 
 ### 4. Managing Pydantic Data Models in FastAPI
@@ -207,18 +271,36 @@
 
 + Applying validation at a field level
 
-+ Applying 
++ Applying validation at an object level 
+
++ Applying validation before Pydantic parsing
+
+#### Working with Pydantic objects
+
++ Converting an object into a dictionary 
+
++ Creating an instance from a sub-class object
+
++ Updating an instance with a partial one
 
 ### 5. Dependency Injections in FastAPI
+
+#### What is dependency injection ?
+
+#### Creating & using a function dependency
+
+#### Creating & using a parameterized dependency with a class
+
+#### Using dependencies at a path, router & global level
+
 
 ## Section 2: Build & Deploy a Complete Web Backend with FastAPI
 
 ### 6. Databases and Asynchronous ORMs
 
-### 7. Databases and Asynchronous ORMs
+### 7. Managing Authentication & Security in FastAPI
 
 ### 8. Defining WebSockets for Two-Way Interactive Communication in FastAPI
-
 
 ### 9. Testing an API Asynchronously with pytest and HTTPX
 
