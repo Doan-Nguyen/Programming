@@ -257,27 +257,90 @@
 
 #### Defining models & their field types with Pydantic
 
-+ Standard field types
++ Standard field types ~ các loại trường tiêu chuẩn
+  + Định nghĩa các trường với các kiểu dữ liệu tiêu chuẩn theo *type hints*
+  + Example 1: 
+  + Example 2: 
 
 + Optional fields & default values
+  + Ở các ví dụ trên, ta thấy các trường sẽ được cung cấp khi khởi tạo một model. Tuy nhiên, có những giá trị nên để trạng thái tùy chọn vì chúng có thể không liên hệ với instance của object. Hay đơn giản, ta muốn đặt 1 giá trị default cho 1 trường không quá đặc biệt.
+    + *Optional* sẽ được sử dụng khi định nghĩa fields trong model.
+    + **Note**: không gán các giá trị mặc định là kiểu dynamic (datetimes)
 
 + Field validation
+  + Trong chương 3, ta đã tìm học về việc xác thực các _request parameters_. Vd: với int sẽ trong khoảng giá trị, với string sử dụng biểu thức chính tắc *regular expression (regex)*.
+  + Tương tự như thế để xác thực các trường của model.
+  + _Dynamic default values_:
+    + _Pydantic_ cung cấp một tham số _default_factory_ cho phép gán các giá trị với tập giá trị cố định.
+    
 
 + Validating emails addresses & URLs with Pydantic types
+  + FastAPI cung cấp một vài classes giúp xác thực một vài patterns phổ biến như email hoặc Uniform Resource Locators (URL)
+    + EmailStr
+    + HttpUrl
 
 #### Creating model variations with class inheritance
 
++ _Pydantic model_ có thể được định nghĩa 2 dạng dữ liệu:
+  + Dữ liệu để lưu trữ trong backend.
+  + Dữ liệu để hiện thị tới user.
+
++ Từ nhu cầu phân chia dạng dữ liệu, một mẫu thiết kế phổ biến trong FastAPI:
+  + Model cho việc tạo dữ liệu.
+  + Model cho việc phản hồi (response).
+  + Model cho việc lưu trữ data vào DB.
+  + Example dummy: [c4_model_inheritance_01]()
+  + Example "smart": [c4_model_inheritance_01]()
+
 #### Adding custom data validation with Pydantic
 
++ Overview
+  + Ở các phần trước, ta đã học cách làm thế nào để xác thực models thông qua tham số *Field*. 
+  + FastAPI cho phép tùy biến các phướng pháp xác thực bởi *validators* - là các hàm trong model có thể áp dụng với một cấp độ của field hoặc object.
+
 + Applying validation at a field level
+  + Áp dụng một rule xác thực cho 1 trường cụ thể.
+  + Để thực hiện, ta cần sử dụng một hàm static trong model & *decorate* nó với *validator* decorator.
+  + Example: [c4_custom_validation_01]()
 
 + Applying validation at an object level 
+  + Việc xác thực một trường phụ thuộc vào một trường khác cũng thường xuyên xảy ra. Vd: check password mà user nhập vào có match với password lưu trong hệ thống.
+  + Để thực hiện việc này, ta cần truy xuất vào trong dữ liệu của object. Pydantic cung cấp *roor_validator* decorator giúp thực hiện việc này.
+  + Example: [c4_custom_validation_02]()
+  + Trong ví dụ trên, Pydantic thực hiện việc:
+    + nếu các giá trị không đúng theo logic, nó sẽ raise issues.
+    + *values* dictionary được trả về sẽ được gán cho model.
 
 + Applying validation before Pydantic parsing
+  + Ở các ví dụ trước, các *validators* thường chạy sau khi Pydantic xong công việc phân tích. Điều này có nghĩa, giá trị bạn nhận được phù hợp với trường cụ thể chỉ định.
+  + Tuy nhiên, đôi khi bạn cần cung cấp tùy biến logic phân tích sao cho có thể biến đổi giá trị đầu vào chưa chính xác phù hợp với kiểu mà bạn mong muốn.
+  + Trong trường hợp này, bạn nên chạy _validator_ trước khi sử dụng _Pydantic_ phân tích. Cú pháp:
+  ```
+  @validator("values", pre=True)
+  ```
+  + Example: [c4_custom_validation_03]()
 
 #### Working with Pydantic objects
 
 + Converting an object into a dictionary 
+  + Cú pháp:
+  ```
+  object_dict = object.dict()
+  ```
+  + Example: [c4_working_pydantic_objects_01]()
+
+  + Ngoài ra có thể lựa chọn/loại bỏ các trường cần thiết bằng 
+    + *object.dict(include={"key1", "key2"})*
+    + *object.dict(exclude={"key3", "key4"})*
+  
+  ```
+  person_include = person.dict(include={"first_name", "last_name"})
+  #
+  person_include = person.dict(exclude={"birthdate", "interests"})
+  ```
+  
+  + Với các trường dùng nhiều, ta có thể tạo 1 hàm thực hiện extract trường.
+
 
 + Creating an instance from a sub-class object
 
@@ -307,3 +370,23 @@
 ### 10. Deploying a FastAPI Project
 
 ## Section 3: Build a Data Science API with Python & FastAPI
+
+### 11. Introduction to NumPy and pandas
+
+### 12. Training Machine Learning Models with scikit-learn
+
+### 13. Creating an Efficient Prediction API Endpoint with FastAPI
+
+### 14. Implement a Real-Time Face Detection System Using WebSockets with FastAPI and OpenCV
+
+## Appendix:
+
++ Mình mới tìm hiểu về backend nên chắc chắn có nhiều khái niệm, kiến thức còn thiếu. Phần này mình dùng để tự giải đáp cho bản thân. 
+
+### 1. Pydantic
+
+### 2. decorators
++ *decorators*: là một dạng design pattern cho phép mở rộng chức năng của object nhưng không thay đổi code.
++ Trong python, *decorators* là những hàm nhận tham số đầu vào là một hàm khác & mở rộng tính năng cho hàm đó mà không thay đổi luồng xứ lý bên trong hàm.
+
+
