@@ -18,4 +18,5 @@ class Person(BaseModel):
     interests: List[str]
     address: Address
 
-
+    def name_dict(self):
+        return self.dict(include={"first_name", "last_name"})
