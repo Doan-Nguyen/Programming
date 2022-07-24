@@ -390,3 +390,26 @@
 + Trong python, *decorators* là những hàm nhận tham số đầu vào là một hàm khác & mở rộng tính năng cho hàm đó mà không thay đổi luồng xứ lý bên trong hàm.
 
 
+
+Ngày 1: Setup Environent (Java, Eclipse, Gradle, MariaDB)
+  -> build IDE successfully, investigate source base (http://gitlab.tsdv.com.vn/tiss/dmart-app/dmart-app)
+
+Ngày 2: Tìm hiểu về main flow java web, các khái niệm về HTML/CSS/Java script, Controller, Service, Repository
+ DB thông qua ví dụ, tham khảo các nguồn (https://mkyong.com/, https://www.baeldung.com/, https://www.w3schools.com/)
+ -> https://www.baeldung.com/spring-boot-start
+ -> Tao một simple web page Hello world
+
+
+Ngày 3: Practice trên dự án 
+-> Checkout source  tranining (http://gitlab.tsdv.com.vn/tiss/dmart-app/dmart-app/-/tree/training),
+
+-> Làm một vài ví dụ/function  Backend : Repository , query DB, hiển thị lên GUI cho chắc năng quản lý sinh viên (student table: id, name, age, address)
+
+Ngày 4: Data table GUI/Java script
+-> thymeleaf (https://www.baeldung.com/thymeleaf-in-spring-mvc)
+-> How to binding Data from DB to Datatable example
+
+Ngày 5: Buffer
+
+On Job : Trong tháng 8 sau khi review ket qua cua training plan
+
